@@ -10,7 +10,13 @@ app.set('view engine', 'ejs')
 app.use('/node_modules',express.static('./node_modules'))
 
 app.get('/',(req,res) =>{
-    res.render('index',{name:'许倩倩倩啊'})
+    res.render('index',{name:'许倩倩倩啊',age:'23'})
+})
+
+// 用户请求的是注册页面
+app.get('/register',(req,res) =>{
+
+    res.render('./user/register.html')
 })
 
 app.listen(80,() =>{
