@@ -45,6 +45,32 @@
   </form>
 
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+
+  <script>  
+  $(function(){
+    $("#form").on('submit',function(e){
+      // 阻止表单的默认提交行为
+      e.preventDefault()
+
+      $.ajax({
+        url:'/login',
+        data:$('#form').serialize(),
+        type:'post',
+        dataType:'json',
+        success:(res)=>{
+          // console.log(res);
+          if(res.status !== 403){
+            // 登录失败
+            return alert(res.msg)
+          }
+          location.href = '/'
+          
+        }
+
+      })
+    })
+  })
+  </script>
 </body>
 
 </html>
